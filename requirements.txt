@@ -1,0 +1,15 @@
+pandas
+numpy
+dash
+dash-auth
+dash-core-components
+dash-html-components
+dash-renderer
+dash-table
+cufflinks
+Gunicorn
+plotly
+matplotlib
+seaborn
+scikit-image
+scikit-learn
