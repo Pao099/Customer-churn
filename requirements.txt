@@ -13,3 +13,5 @@ matplotlib
 seaborn
 scikit-image
 scikit-learn
+jupyter_dash
+JupyterDash
