@@ -1,1 +1,2 @@
-web: gunicorn app:server  --log-file=- app.pynb
+web: gunicorn app:server  --log-file=- 
+
