@@ -27,13 +27,13 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 
 #Read in data file, bankchurners.csv
-data=pd.read_csv('C:/Users/pao09/BankChurners.csv')
+data=pd.read_csv('BankChurners.csv')
 
 #Data Cleaning
 #Drop unwanted columns
 df=data.drop(['CLIENTNUM','Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1',
          'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2'], errors='ignore',axis=1)
-df2=pd.read_csv('C:/Users/pao09/BankChurners2.csv')
+df2=pd.read_csv('BankChurners2.csv')
 df3= df2.iloc[:,1:]
 #Separate data into categorical, continuous and discreet numeric data types for ease of identification and analysis
 cat_data=df.select_dtypes('object').columns.to_list()
