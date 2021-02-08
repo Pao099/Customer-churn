@@ -7,7 +7,7 @@ dash-html-components
 dash-renderer
 dash-table
 cufflinks
-Gunicorn
+gunicorn
 plotly
 matplotlib
 seaborn
