@@ -6,7 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gs
 import seaborn as sns
-from eda_module import *
 import plotly.express as px
 import plotly as py
 import plotly.graph_objs as go
