@@ -44,6 +44,7 @@ df3= df2.iloc[:,1:]
 cat_data=df.select_dtypes('object').columns.to_list()
 cont_data=df.select_dtypes('float64').columns.to_list()
 disc_data=df.select_dtypes('int64').columns.to_list()
+num_data=cont_data+disc_data
 all_data=df.columns.to_list()
 all_data2=df3.columns.to_list()
 
@@ -52,6 +53,17 @@ app.layout = html.Div([
     html.Div([
         html.H2("Bank Customer Attrition Data Representation",
                 style={'color': 'blue', 'font-style': 'regular', 'font-weight': 'bold'}),
+        html.Div([html.H3("Contour Maps", style={'color': 'purple', 'font-style': 'regular', 'font-weight': 'bold'}),
+                  html.P("Data Columns:"),
+                  html.P("Select from the list of numeric data below to display the Contour maps:"),
+                  dcc.Dropdown(
+                      id='numdata',
+                      value=num_data[0],
+                      options=[{'label': x, 'value': x}
+                               for x in num_data],
+                      multi=False,
+                      clearable=False
+                  ), dcc.Graph(id="kde")]),
         html.Div([html.H3("Scatterplots", style={'color': 'purple', 'font-style': 'regular', 'font-weight': 'bold'}),
                   html.P("Select from the list below to display a scatterplot of correlations:"),
                   html.H5("All Data"),
@@ -127,5 +139,14 @@ def scatterplot(v1, v2):
     return fig
 
 
+@app.callback(
+    dash.dependencies.Output("kde", "figure"),
+    [dash.dependencies.Input("numdata", "value")])
+def kdemap(num):
+    fig = px.density_contour(df, x=num, y="Attrition_Flag", title=f"Contour Map for {num}")
+    fig.update_traces(contours_coloring="fill", contours_showlabels=True)
+    return fig
+
+
 if __name__ == '__main__':
-    app.run_server(debug=True, use_reloader=False, mode='external')
+    app.run_server(debug=True, use_reloader=False, mode='inline')
