@@ -24,10 +24,13 @@ from jupyter_dash import JupyterDash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import dash_auth
 import plotly.express as px
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+VALID_USERNAME_PASSWORD_PAIRS = {'username': 'password'}
+auth = dash_auth.BasicAuth( app,VALID_USERNAME_PASSWORD_PAIRS)
 server = app.server
 # app = dash.Dash(__name__)
 # app=JupyterDash(__name__)
